@@ -1,5 +1,5 @@
 [package]
-name = "redjaxk-server"
+name = "towa-hub"
 version = "0.1.0"
 edition.workspace = true
 rust-version.workspace = true
@@ -7,6 +7,7 @@ rust-version.workspace = true
 [dependencies]
 towa-core = { path = "../../libs/towa-core" }
 towa-proto = { path = "../../libs/towa-proto" }
+towa-web = { path = "../../libs/towa-web" }
 anyhow.workspace = true
 async-trait.workspace = true
 axum.workspace = true

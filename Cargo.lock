@@ -1171,31 +1171,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
 
 [[package]]
-name = "redjaxk-server"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "async-trait",
- "axum",
- "axum-htmx",
- "futures",
- "hypertext",
- "ipnet",
- "serde",
- "serde_json",
- "serde_with",
- "thiserror",
- "tokio",
- "toml",
- "tonic",
- "towa-core",
- "towa-proto",
- "tower-http",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "ref-cast"
 version = "1.0.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1771,6 +1746,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "towa-hub"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "axum",
+ "axum-htmx",
+ "futures",
+ "hypertext",
+ "ipnet",
+ "serde",
+ "serde_json",
+ "serde_with",
+ "thiserror",
+ "tokio",
+ "toml",
+ "tonic",
+ "towa-core",
+ "towa-proto",
+ "towa-web",
+ "tower-http",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "towa-proto"
 version = "0.1.0"
 dependencies = [
@@ -1781,6 +1782,15 @@ dependencies = [
  "tonic",
  "tonic-prost",
  "tonic-prost-build",
+]
+
+[[package]]
+name = "towa-web"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "hypertext",
+ "thiserror",
 ]
 
 [[package]]

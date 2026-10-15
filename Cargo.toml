@@ -3,6 +3,7 @@ resolver = "3"
 members = [
   "libs/towa-core",
   "libs/towa-proto",
+  "libs/towa-web",
 
   "services/towa-agent",
   "services/towa-hub",
