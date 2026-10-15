@@ -26,6 +26,8 @@
               clippy
               rust-analyzer
 
+              buf
+
               nixd
               nixfmt
               

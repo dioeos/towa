@@ -1,0 +1,30 @@
+[workspace]
+resolver = "3"
+members = [
+  "libs/towa-core",
+  "libs/towa-proto",
+
+  "services/towa-agent",
+  "services/towa-hub",
+]
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.95"
+
+[workspace.dependencies]
+async-trait = "0.1.92"
+anyhow = "1.0"
+axum = "0.8.9"
+hypertext = { version = "0.12.1", features = ["htmx"] }
+ipnet = { version = "2.12.2", features = ["serde"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0.20"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "process"] }
+tonic = { version = "0.14", features = ["codegen"] }
+toml = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "std", "fmt"] }
+url = "2.5.8"
+
