@@ -27,6 +27,7 @@
               rust-analyzer
 
               buf
+              protobuf
 
               nixd
               nixfmt

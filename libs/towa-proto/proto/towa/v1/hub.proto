@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package towa.v1;
+
+service HubService {
+  rpc RegisterNode(RegisterNodeRequest) returns (RegisterNodeResponse);
+}
+
+message RegisterNodeRequest {
+  string hostname = 1;
+  string operating_system = 2;
+  string hardware_model = 3;
+  string hardware_vendor = 4;
+  string architecture = 5;
+  string fingerprint = 6;
+}
+
+message RegisterNodeResponse {}

@@ -1,1 +1,3 @@
+mod grpc;
+
 fn main() {}

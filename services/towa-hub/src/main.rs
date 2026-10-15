@@ -1,3 +1,5 @@
+mod grpc;
+
 use axum::{Router, routing::get};
 use towa_web::handlers;
 use tower_http::services::ServeDir;
