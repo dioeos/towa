@@ -56,31 +56,45 @@
     {
       inherit packages;
 
-      nixosConfigurations = {
-        agent-vm = mkDevVM "x86_64-linux" [
-          ./nix/dev/microvms/agent.nix
-        ];
-        hub-vm = mkDevVM "x86_64-linux" [
-          ./nix/dev/microvms/hub.nix
-
-          (
-            { pkgs, lib, ... }:
-            let
-              packages = self.packages.${pkgs.stdenv.hostPlatform.system};
-              apps = [
-                packages.hub
+      nixosConfigurations =
+        builtins.listToAttrs (
+          map
+            (id: {
+              name = "agent-${toString id}";
+              value = mkDevVM "x86_64-linux" [
+                (import ./nix/dev/microvms/agent.nix { inherit id; })
               ];
-            in
-            {
-              environment.systemPackages = lib.unique (
-                apps
-                ++ [ pkgs.stdenv.cc ]
-                ++ lib.concatMap (package: package.nativeBuildInputs ++ package.buildInputs) apps
-              );
-            }
-          )
-        ];
-      };
+            })
+            [
+              1
+              2
+              3
+              4
+              5
+            ]
+        )
+        // {
+          hub-vm = mkDevVM "x86_64-linux" [
+            ./nix/dev/microvms/hub.nix
+
+            (
+              { pkgs, lib, ... }:
+              let
+                packages = self.packages.${pkgs.stdenv.hostPlatform.system};
+                apps = [
+                  packages.hub
+                ];
+              in
+              {
+                environment.systemPackages = lib.unique (
+                  apps
+                  ++ [ pkgs.stdenv.cc ]
+                  ++ lib.concatMap (package: package.nativeBuildInputs ++ package.buildInputs) apps
+                );
+              }
+            )
+          ];
+        };
 
       devShells = forAllPlatforms (
         pkgs:
