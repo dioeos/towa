@@ -11,8 +11,8 @@
 
   microvm = {
     hypervisor = "cloud-hypervisor";
-    vcpu = 8;
-    mem = 4096;
+    vcpu = 2;
+    mem = 1024;
     virtiofsd.group = "kvm";
 
     shares = [
