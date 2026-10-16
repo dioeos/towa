@@ -1,10 +1,10 @@
 { id }:
-{ ... }:
+{ lib, ... }:
 
 let
   name = "agent-${toString id}";
-  libId = if id < 10 then "0{toString id}" else toString id;
-  mac = "02:00:00:00:01:${libId}";
+  macSuffix = lib.fixedWidthString 2 "0" (lib.toHexString id);
+  mac = "02:00:00:00:01:${macSuffix}";
 in
 {
   environment.shellAliases = {
@@ -31,7 +31,7 @@ in
   };
 
   systemd.network.networks."20-agent" = {
-    matchConfig.MACAddress = "02:00:00:00:00:01";
+    matchConfig.MACAddress = mac;
     address = [ "192.168.100.${toString (20 + id)}/24" ];
 
     networkConfig.DHCP = "no";
